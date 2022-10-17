@@ -123,7 +123,7 @@ $job_title = $row['title'];
 					
 					<div class="logo-wrapper">
 						<div class="logo">
-							<a href="./"><img src="../images/logo.png" alt="Logo" /></a>
+							<a href="./"><img src="../images/logor.png" alt="Logo" /></a>
 						</div>
 					</div>
 					

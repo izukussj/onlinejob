@@ -25,16 +25,18 @@ $page1 = 0;
 $page = 1;	
 }
 
-if (isset($_GET['country']) && ($_GET['category']) ){
+if (isset($_GET['country']) && isset($_GET['category']) && isset($_GET['skill'])  ){
 $cate = $_GET['category'];
 $country = $_GET['country'];	
-$query1 = "SELECT * FROM tbl_jobs WHERE category = :cate AND country = :country ORDER BY enc_id DESC LIMIT $page1,12";
-$query2 = "SELECT * FROM tbl_jobs WHERE category = :cate AND country = :country ORDER BY enc_id DESC";
+$skill = $_GET['skill'];
+$query1 = "SELECT * FROM tbl_jobs WHERE category = :cate AND country = :country AND skill like '%$skill%' ORDER BY enc_id DESC LIMIT $page1,12";
+$query2 = "SELECT * FROM tbl_jobs WHERE category = :cate AND country = :country AND skill= '%$skill%' ORDER BY enc_id DESC"; 
 $fromsearch = true;
 
 $slc_country = "$country";
 $slc_category = "$cate";
-$title = "$slc_category jobs in $slc_country";
+$slc_skill = "$skill";
+$title = "$slc_category ($slc_skill) jobs in $slc_country";
 }else{
 $query1 = "SELECT * FROM tbl_jobs ORDER BY enc_id DESC LIMIT $page1,12";
 $query2 = "SELECT * FROM tbl_jobs ORDER BY enc_id DESC";	
@@ -101,7 +103,7 @@ $title = "Job List";
 					
 					<div class="logo-wrapper">
 						<div class="logo">
-							<a href="./"><img src="images/logo.png" alt="Logo" /></a>
+							<a href="./"><img src="images/logor.png" alt="Logo" /></a>
 						</div>
 					</div>
 					
@@ -202,7 +204,7 @@ $title = "Job List";
 						<div class="second-search-result-inner">
 							<span class="labeling">Search a job</span>
 							<div class="row">
-							
+							<input class="form-control" placeholder="Enter a skill" name="skill" required type="skill"><br/>
 								<div class="col-xss-12 col-xs-6 col-sm-6 col-md-5">
 									<div class="form-group form-lg">
 										<select class="form-control" name="category" required/>
@@ -272,6 +274,7 @@ $title = "Job List";
 	
 										?>
 										</select>
+										
 									</div>
 								</div>
 								
@@ -515,100 +518,99 @@ $title = "Job List";
 				</div>
 			
 			</div>
-
 			<footer class="footer-wrapper">
 			
-				<div class="main-footer">
+			<div class="main-footer">
+			
+				<div class="container">
 				
-					<div class="container">
+					<div class="row">
 					
-						<div class="row">
+						<div class="col-sm-12 col-md-9">
 						
-							<div class="col-sm-12 col-md-9">
+							<div class="row">
 							
-								<div class="row">
+								<div class="col-sm-6 col-md-4">
 								
-									<div class="col-sm-6 col-md-4">
-									
-										<div class="footer-about-us">
-											<h5 class="footer-title">About Nightingale Jobs</h5>
-											<p>Nightingale Jobs is a job portal, online job management system developed by Nathaniel Nkrumah for his project in february 2018.</p>
-										
-										</div>
-
-									</div>
-									
-									<div class="col-sm-6 col-md-5 mt-30-xs">
-										<h5 class="footer-title">Quick Links</h5>
-										<ul class="footer-menu clearfix">
-											<li><a href="./">Home</a></li>
-											<li><a href="job-list.php">Job List</a></li>
-											<li><a href="employers.php">Employers</a></li>
-											<li><a href="employees.php">Employees</a></li>
-											<li><a href="contact.php">Contact Us</a></li>
-											<li><a href="#">Go to top</a></li>
-
-										</ul>
+									<div class="footer-about-us">
+										<h5 class="footer-title">About EILCO Jobs</h5>
+										<p>EILCO Jobs is a job portal, online job management system developed by GL team .</p>
 									
 									</div>
 
 								</div>
+								
+								<div class="col-sm-6 col-md-5 mt-30-xs">
+									<h5 class="footer-title">Quick Links</h5>
+									<ul class="footer-menu clearfix">
+										<li><a href="./">Home</a></li>
+										<li><a href="job-list.php">Job List</a></li>
+										<li><a href="employers.php">Employers</a></li>
+										<li><a href="employees.php">Employees</a></li>
+										<li><a href="contact.php">Contact Us</a></li>
+										<li><a href="#">Go to top</a></li>
+
+									</ul>
+								
+								</div>
 
 							</div>
-							
-							<div class="col-sm-12 col-md-3 mt-30-sm">
-							
-								<h5 class="footer-title">Nightingale Jobs Contact</h5>
-								
-								<p>Address : Takoradi, School Junction PO.BOX AX40</p>
-								<p>Email : <a href="mailto:nightingale.nath2@gmail.com">nightingale.nath2@gmail.com</a></p>
-								<p>Phone : <a href="tel:+233546607474">+233 546 607 474</a></p>
-								
 
-							</div>
-
-							
 						</div>
+						
+						<div class="col-sm-12 col-md-3 mt-30-sm">
+						
+							<h5 class="footer-title">GL Team Contact</h5>
+							
+							<p>Email : <a href="omayma.Dahhaj@gmail.com">omayma.Dahhaj@gmail.com</a></p>
+							<p>Phone : <a href="tel:0678945518">0678945518</a></p>
+							
+
+						</div>
+
 						
 					</div>
 					
 				</div>
 				
-				<div class="bottom-footer">
-				
-					<div class="container">
-					
-						<div class="row">
-						
-							<div class="col-sm-4 col-md-4">
-					
-								<p class="copy-right">&#169; Copyright <?php echo date('Y'); ?> Nightingale Vision Software</p>
-								
-							</div>
-							
-							<div class="col-sm-4 col-md-4">
-							
-								<ul class="bottom-footer-menu">
-									<li><a >Developed by Nathaniel Nkrumah</a></li>
-								</ul>
-							
-							</div>
-							
-							<div class="col-sm-4 col-md-4">
-								<ul class="bottom-footer-menu for-social">
-									<li><a href="<?php echo "$tw"; ?>"><i class="ri ri-twitter" data-toggle="tooltip" data-placement="top" title="twitter"></i></a></li>
-									<li><a href="<?php echo "$fb"; ?>"><i class="ri ri-facebook" data-toggle="tooltip" data-placement="top" title="facebook"></i></a></li>
-									<li><a href="<?php echo "$ig"; ?>"><i class="ri ri-instagram" data-toggle="tooltip" data-placement="top" title="instagram"></i></a></li>
-								</ul>
-							</div>
-						
-						</div>
-
-					</div>
-					
-				</div>
+			</div>
 			
-			</footer>
+			<div class="bottom-footer">
+			
+				<div class="container">
+				
+					<div class="row">
+					
+						<div class="col-sm-4 col-md-4">
+				
+							<p class="copy-right">&#169; Copyright <?php echo date('Y'); ?> EILCO</p>
+							
+						</div>
+						
+						<div class="col-sm-4 col-md-4">
+						
+							<ul class="bottom-footer-menu">
+								<li><a >Developed by team GL</a></li>
+							</ul>
+						
+						</div>
+						
+						<div class="col-sm-4 col-md-4">
+							<ul class="bottom-footer-menu for-social">
+								<li><a href="<?php echo "$tw"; ?>"><i class="ri ri-twitter" data-toggle="tooltip" data-placement="top" title="twitter"></i></a></li>
+								<li><a href="<?php echo "$fb"; ?>"><i class="ri ri-facebook" data-toggle="tooltip" data-placement="top" title="facebook"></i></a></li>
+								<li><a href="<?php echo "$ig"; ?>"><i class="ri ri-instagram" data-toggle="tooltip" data-placement="top" title="instagram"></i></a></li>
+							</ul>
+						</div>
+					
+					</div>
+
+				</div>
+				
+			</div>
+		
+		</footer>
+		
 			
 		</div>
 

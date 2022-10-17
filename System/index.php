@@ -78,7 +78,7 @@ include 'constants/check-login.php';
 					
 					<div class="logo-wrapper">
 						<div class="logo">
-							<a href="./"><h2 style="color:white";>EILCO JOBS<h2></a>
+							<a href="./"><img src="images/logor.png" alt="Logo" /></a>
 						</div>
 					</div>
 					
